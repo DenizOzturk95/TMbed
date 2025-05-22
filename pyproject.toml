@@ -7,7 +7,7 @@ maintainers = [{name = "Michael Bernhofer", email = "Michael.Bernhofer@tum.de"}]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
     "h5py >= 3.2.1",
     "numpy >= 1.20.3",
@@ -16,6 +16,8 @@ dependencies = [
     "tqdm >= 4.62.3",
     "transformers >= 4.11.3",
     "typer >= 0.4.1",
+    "onnx==1.16.1",
+    "onnxruntime==1.22.0"
 ]
 
 [project.scripts]
