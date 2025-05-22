@@ -140,8 +140,28 @@ class Predictor(nn.Module):
 
         x = F.pad(x, pad=(3, 3), mode='constant', value=0.0)
 
-        x = x.unfold(dimension=2, size=7, step=1)
+        x = unfold_custom(input_tensor=x, dimension=2, size=7, step=1)
 
         x = torch.einsum('bcnm,m->bcn', x, self.filter_kernel)
 
         return x
+
+
+def unfold_custom(input_tensor, dimension, size, step):
+    if dimension == 2:
+        # Get shape information
+        B, C, L = input_tensor.shape
+
+        # Calculate output length
+        output_length = L - size + 1
+
+        # Initialize output tensor
+        result = torch.zeros(B, C, output_length, size, device=input_tensor.device)
+
+        # Fill the output tensor
+        for i in range(size):
+            result[..., i] = input_tensor[..., i:i + output_length]
+
+        return result
+    else:
+        raise ValueError(f"Unsupported dimension {dimension} for ONNX export")
