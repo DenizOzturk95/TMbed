@@ -4,8 +4,6 @@ version = "1.0.2"
 description = "Transmembrane protein predictor using embeddings"
 authors = [{name = "Michael Bernhofer", email = "Michael.Bernhofer@tum.de"}]
 maintainers = [{name = "Michael Bernhofer", email = "Michael.Bernhofer@tum.de"}]
-license = "Apache-2.0"
-license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -20,6 +18,9 @@ dependencies = [
 
 [project.scripts]
 tmbed = "tmbed.tmbed:run"
+
+[project.license]
+text = "Apache-2.0"
 
 [project.urls]
 Homepage = "https://github.com/BernhoferM/TMbed"
